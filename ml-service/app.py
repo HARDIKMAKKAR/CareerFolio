@@ -79,6 +79,10 @@ print("✅ FAISS model ready!")
 # ------------------------------
 
 
+@app.route("/")
+def home():
+    return "ML Service Running"
+
 @app.route("/recommend-skills", methods=["POST"])
 def recommend_skills():
     data = request.get_json()

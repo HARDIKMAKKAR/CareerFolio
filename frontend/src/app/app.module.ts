@@ -10,7 +10,7 @@ import { ErrorComponent } from './error/error.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OutputComponent } from './output/output.component';
 import { ForecastResultComponent } from './forecast-result/forecast-result.component';
@@ -39,7 +39,7 @@ import { GapResultComponent } from './gap-result/gap-result.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
