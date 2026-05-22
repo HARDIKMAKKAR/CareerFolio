@@ -55,20 +55,20 @@ getPredictedRole() {
   constructor(private http: HttpClient) {}
 
   recommend(skills: any[]): Observable<any> {
-    return this.http.post<any>(`http://127.0.0.1:5001/recommend-skills`, { skills : skills });
+    return this.http.post<any>(`https://careerfolio-ml-service.onrender.com/recommend-skills`, { skills : skills });
   }
 
   predict(skills: any[]): Observable<any> {
-    return this.http.post<any>(`http://127.0.0.1:5001/predict-career`, { skills : skills });
+    return this.http.post<any>(`https://careerfolio-ml-service.onrender.com/predict-career`, { skills : skills });
   }
 
 
   skill_gap_analysis(skills: any[] , targetRole : any): Observable<any> {
-    return this.http.post<any>(`http://127.0.0.1:5001/api/skills/gap`, { skills : skills , target_role : targetRole });
+    return this.http.post<any>(`https://careerfolio-ml-service.onrender.com/api/skills/gap`, { skills : skills , target_role : targetRole });
   }
 
   forecast(skills: any[] , targetRole : any , exp:any , projects : any , certs : any , learning_rate : any): Observable<any> {
-    return this.http.post<any>(`http://127.0.0.1:5001/forecast-growth`, { skills : skills , target_role : targetRole , exp : exp , projects : projects , certs : certs , learning_rate : learning_rate});
+    return this.http.post<any>(`https://careerfolio-ml-service.onrender.com/forecast-growth`, { skills : skills , target_role : targetRole , exp : exp , projects : projects , certs : certs , learning_rate : learning_rate});
   }
 
 }

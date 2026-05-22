@@ -18,7 +18,7 @@ async function recommend(req, res) {
     const cleanedSkills = skills.map(s => s.trim()).filter(s => s.length > 0);
 
     // ✅ ML microservice URL (your Flask model)
-    const ML_URL = 'http://127.0.0.1:5001/recommend-skills';
+    const ML_URL = 'https://careerfolio-ml-service.onrender.com/recommend-skills';
 
     console.log("🔹 Sending skills to Python ML service:", cleanedSkills);
 
