@@ -1,39 +1,18 @@
-const express = require('express')
+const express = require('express');
 require('dotenv').config();
-const http = require('http');
+
 const cors = require('cors');
-const db = require('./database/db')
+
+const db = require('./database/db');
+
 const authRoutes = require('./routes/auth-routes');
 const fileRoutes = require('./routes/file-routes');
 const extractRoutes = require('./routes/extract-route');
 const skillRoutes = require('./routes/skill-routes');
-const app = express()
+
+const app = express();
 
 db();
-
-
-
-app.use(cors());
-app.use(express.json());
-app.use('/api/auth' ,  authRoutes);
-app.use('/api/files' ,  fileRoutes);
-app.use('/api/extract' ,  extractRoutes);
-app.use('/api/skills' ,  skillRoutes);
-
-
-const express = require('express')
-require('dotenv').config();
-const http = require('http');
-const cors = require('cors');
-const db = require('./database/db')
-const authRoutes = require('./routes/auth-routes');
-const fileRoutes = require('./routes/file-routes');
-const extractRoutes = require('./routes/extract-route');
-const skillRoutes = require('./routes/skill-routes');
-const app = express()
-
-db();
-
 
 app.use(cors({
     origin: '*',
@@ -46,11 +25,11 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('CareerFolio Backend Running');
 });
-app.use('/api/auth' ,  authRoutes);
-app.use('/api/files' ,  fileRoutes);
-app.use('/api/extract' ,  extractRoutes);
-app.use('/api/skills' ,  skillRoutes);
 
+app.use('/api/auth', authRoutes);
+app.use('/api/files', fileRoutes);
+app.use('/api/extract', extractRoutes);
+app.use('/api/skills', skillRoutes);
 
 const PORT = process.env.PORT || 5000;
 
