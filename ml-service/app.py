@@ -12,7 +12,7 @@ import joblib
 app = Flask(__name__)
 
 # ✅ Enable CORS (allow Angular frontend)
-CORS(app, resources={r"/*": {"origins": "http://localhost:4200"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # ------------------------------
 # 1️⃣ Load Embedding Model

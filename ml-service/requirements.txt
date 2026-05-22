@@ -6,3 +6,4 @@ numpy==2.4.6
 pandas==3.0.3
 scikit_learn==1.8.0
 sentence_transformers==5.1.2
+gunicorn==23.0.0
