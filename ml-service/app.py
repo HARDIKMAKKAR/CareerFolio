@@ -9,6 +9,8 @@ from flask_cors import CORS
 import joblib
 
 
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.environ["OMP_NUM_THREADS"] = "1"
 app = Flask(__name__)
 
 # ✅ Enable CORS (allow Angular frontend)
@@ -18,7 +20,12 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 # 1️⃣ Load Embedding Model
 # ------------------------------
 print("🔹 Loading embedding model...")
-embedder = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+embedder = SentenceTransformer(
+    'sentence-transformers/all-MiniLM-L6-v2',
+    device='cpu'
+)
+
+embedder.max_seq_length = 128
 
 # ------------------------------
 # 2️⃣ Load or Build Skill Index
@@ -46,7 +53,13 @@ else:
     ]
 
     # Generate embeddings for each skill
-    skill_embs = np.array(embedder.encode(skill_names, normalize_embeddings=True))
+    skill_embs = np.array(
+    embedder.encode(
+        skill_names,
+        normalize_embeddings=True
+    ),
+    dtype=np.float32
+)
 
     # Build FAISS index
     index = faiss.IndexFlatIP(skill_embs.shape[1])
@@ -76,7 +89,13 @@ def recommend_skills():
     print(f"🧠 Received skills: {extracted_skills}")
 
     # Compute embeddings for input skills
-    query_embs = np.array(embedder.encode(extracted_skills, normalize_embeddings=True))
+    query_embs = np.array(
+    embedder.encode(
+        extracted_skills,
+        normalize_embeddings=True
+    ),
+    dtype=np.float32
+)
 
     # Search top 5 nearest for each skill
     D, I = index.search(query_embs, 5)
@@ -294,6 +313,6 @@ def forecast_growth():
     })
 
 
-
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
