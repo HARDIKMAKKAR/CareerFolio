@@ -1,0 +1,150 @@
+
+<main>
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <h1 id="hero-title" class="hero-title">Treat your skills like <span class="accent">investments</span>.</h1>
+        <p class="hero-sub">
+          Analyze your resume, track real market demand for skills, and forecast your career growth — all on a single,
+          intelligent dashboard built for meaningful career decisions.
+        </p>
+
+        <div class="hero-ctas">
+          <a class="btn-primary btn-lg" href="/upload" id="cta-upload">Get free SVI snapshot</a>
+          <a class="btn-ghost" href="" aria-controls="demo">See demo</a>
+        </div>
+
+        <div class="trust">
+          <span class="trust-count">5,200</span>
+          <span class="trust-text">professionals tracked</span>
+        </div>
+      </div>
+
+      <div class="hero-right" id="demo" aria-hidden="false">
+        <div class="card-svi">
+          <div class="card-head">
+            <div>
+              <div class="muted">Skill Value Index</div>
+              <div class="skill-name">Python <span class="skill-badge">Core</span></div>
+            </div>
+            <div class="svistats">
+              <div class="svichange positive">+12%</div>
+              <div class="muted small">6m</div>
+            </div>
+          </div>
+
+          <div class="chart-wrap" aria-hidden="true">
+            <!-- inline SVG sparkline gives a nice smooth animated feel -->
+            <svg class="sparkline" viewBox="0 0 400 120" preserveAspectRatio="none" role="img" aria-label="SVI sparkline">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#ecfeff" stop-opacity="0.15"/>
+                </linearGradient>
+              </defs>
+              <polyline class="sparkline-path" fill="none" stroke="#059669" stroke-width="3"
+                points="0,78 40,62 80,70 120,46 160,54 200,36 240,44 280,20 320,34 360,28 400,40"/>
+              <polyline class="sparkline-area" fill="url(#g1)" stroke="none"
+                points="0,120 0,78 40,62 80,70 120,46 160,54 200,36 240,44 280,20 320,34 360,28 400,40 400,120"/>
+            </svg>
+          </div>
+
+          <div class="card-foot">
+            <div class="foot-left">
+              <div class="muted">Forecast (6 months)</div>
+              <div class="foot-strong">+8% expected</div>
+            </div>
+            <div class="foot-right">
+              <div class="muted">Volatility</div>
+              <div class="foot-strong">Low</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-features">
+          <div class="mini-card">
+            <div class="mini-title">Top Gainer</div>
+            <div class="mini-value">Cloud Computing <span class="mini-change">+18%</span></div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-title">Suggested</div>
+            <div class="mini-value">AWS Cert <span class="small">18 mo ROI</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="container how" aria-labelledby="how-title">
+    <h2 id="how-title" class="section-title">How it works — 3 steps</h2>
+    <div class="how-grid">
+      <article class="how-card" aria-labelledby="step1">
+        <div class="how-pill">1</div>
+        <h3 id="step1">Upload & parse</h3>
+        <p>Drop your resume or import from LinkedIn. We extract skills, roles and experience with high accuracy.</p>
+      </article>
+
+      <article class="how-card" aria-labelledby="step2">
+        <div class="how-pill">2</div>
+        <h3 id="step2">Market forecasting</h3>
+        <p>We compute a Skill Value Index (SVI) using job-post trends, salary data and industry signals.</p>
+      </article>
+
+      <article class="how-card" aria-labelledby="step3">
+        <div class="how-pill">3</div>
+        <h3 id="step3">Smart investment</h3>
+        <p>Get tailored course & project suggestions with predicted ROI — and run what-if simulations.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="container features" aria-labelledby="features-title">
+    <h2 id="features-title" class="section-title">Core features</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h4>Skill Ticker Board</h4>
+        <p>Live SVI values for skills, with change history and watchlist.</p>
+      </div>
+      <div class="feature">
+        <h4>Career Forecast</h4>
+        <p>3-5 year projections with confidence bands and scenario planning.</p>
+      </div>
+      <div class="feature">
+        <h4>What-if Simulator</h4>
+        <p>Instantly simulate learning a skill and view the projected impact on your CPV.</p>
+      </div>
+      <div class="feature">
+        <h4>Actionable Plan</h4>
+        <p>Courses, project templates and a 90-day career investment roadmap.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA strip -->
+  <section class="cta-strip" aria-labelledby="cta-title">
+    <div class="container cta-inner">
+      <div>
+        <h3 id="cta-title" class="cta-title">Ready to discover your Skill Value Index?</h3>
+        <p class="muted">Upload your resume and get a FREE snapshot with personalized recommendations.</p>
+      </div>
+      <div>
+        <a class="btn-primary" href="/upload">Upload resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">Careerfolio</div>
+      <div class="footer-links">
+        <a href="/about">About</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+</main>

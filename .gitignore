@@ -1,0 +1,69 @@
+# ----------------------------
+# OS / Editor
+# ----------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ----------------------------
+# Logs
+# ----------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ----------------------------
+# Environment files
+# ----------------------------
+.env
+.env.*
+!.env.example
+
+# ----------------------------
+# Frontend (Angular)
+# ----------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.cache/
+frontend/coverage/
+
+# ----------------------------
+# Backend (Node/Express)
+# ----------------------------
+backend/node_modules/
+backend/dist/
+backend/build/
+backend/coverage/
+
+# ----------------------------
+# Python / ML service
+# ----------------------------
+ml-service/venv/
+ml-service/.venv/
+ml-service/env/
+ml-service/ENV/
+ml-service/**/__pycache__/
+ml-service/**/*.pyc
+ml-service/.pytest_cache/
+ml-service/.mypy_cache/
+ml-service/.ipynb_checkpoints/
+
+# ----------------------------
+# Python build artifacts
+# ----------------------------
+ml-service/build/
+ml-service/dist/
+ml-service/*.egg-info/
+
+# ----------------------------
+# Keep runtime model/data files
+# ----------------------------
+!ml-service/**/*.pkl
+!ml-service/**/*.npy
+!ml-service/**/*.faiss
+!ml-service/**/*.json
+!ml-service/**/*.csv

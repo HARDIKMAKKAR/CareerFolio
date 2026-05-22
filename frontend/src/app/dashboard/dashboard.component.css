@@ -1,0 +1,241 @@
+/* ===== GLOBAL ===== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f4f7fb;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== DASHBOARD ===== */
+
+.dashboard {
+  width: 95%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+/* ===== UPLOAD CARD ===== */
+
+.upload-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.upload-card h2 {
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+
+/* ===== FORM ===== */
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input[type="file"] {
+  border: 2px dashed #cbd5e1;
+  padding: 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+input[type="file"]:hover {
+  border-color: #2563eb;
+}
+
+.file-info {
+  background: #eef2ff;
+  color: #3730a3;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.error {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.success {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.uploading {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+/* ===== BUTTONS ===== */
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-weight: 500;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== BUTTON COLORS ===== */
+
+.upload-form button {
+  background: #2563eb;
+  width: fit-content;
+}
+
+.download-btn {
+  background: #2563eb;
+}
+
+.extract-btn {
+  background: #059669;
+}
+
+.analyze-btn {
+  background: #7c3aed;
+}
+
+.forecast-btn {
+  background: #ea580c;
+}
+
+/* ===== TABLE ===== */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.file-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.file-table thead {
+  background: #2563eb;
+  color: white;
+}
+
+.file-table th,
+.file-table td {
+  padding: 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.file-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.file-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.file-name {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+/* ===== ACTIONS ===== */
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===== GAP SECTION ===== */
+
+.gap-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.role-dropdown {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  min-width: 200px;
+  background: white;
+}
+
+.role-dropdown:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+  .file-table th,
+  .file-table td {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .gap-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .role-dropdown {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+
+/* ===== ACTION CELL ===== */
+
+.action-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Separate download button */
+.download-btn {
+  width: fit-content;
+  background: #2563eb;
+}
+
+/* Other stacked buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

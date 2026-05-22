@@ -1,0 +1,149 @@
+<div class="dashboard">
+
+  <!-- Upload Card -->
+  <div class="upload-card">
+
+    <h2>Upload Resume</h2>
+
+    <form class="upload-form" novalidate>
+
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        accept=".pdf,.doc,.docx"
+      />
+
+      <div *ngIf="fileName" class="file-info">
+        {{ fileName }} ({{ fileSizeText }})
+      </div>
+
+      <div *ngIf="error" class="error">
+        {{ error }}
+      </div>
+
+      <button
+        type="button"
+        (click)="upload()"
+        [disabled]="!selectedFile || uploading"
+      >
+        {{ uploading ? 'Uploading...' : 'Upload Resume' }}
+      </button>
+
+      <div *ngIf="uploading" class="uploading">
+        Upload Progress: {{ progress }}%
+      </div>
+
+      <div *ngIf="success" class="success">
+        Resume uploaded successfully
+      </div>
+
+    </form>
+
+  </div>
+
+  <!-- Files Table -->
+  <div class="table-wrapper" *ngIf="files.length > 0">
+
+    <table class="file-table">
+
+      <thead>
+        <tr>
+          <th>Filename</th>
+          <th>Size</th>
+          <th>Download</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let file of files">
+
+          <!-- Filename -->
+          <td class="file-name">
+            {{ file.originalName }}
+          </td>
+
+          <!-- File Size -->
+          <td>
+            {{ (file.size / 1024).toFixed(2) }} KB
+          </td>
+
+          <!-- Separate Download Column -->
+          <td>
+
+            <button
+              class="download-btn"
+              (click)="downloadFile(file.gridFsId, file.originalName)"
+            >
+              Download
+            </button>
+
+          </td>
+
+          <!-- Actions Column -->
+          <td class="action-cell">
+
+            <div class="action-buttons">
+
+              <!-- Extract Skills -->
+              <button
+                class="extract-btn"
+                (click)="extractFile(file.gridFsId, file.originalName)"
+              >
+                Get Skills & Recommendations
+              </button>
+
+              <!-- Gap Analysis -->
+              <div *ngIf="skillsExtracted" class="gap-section">
+
+                <select
+                  [(ngModel)]="selectedRole"
+                  class="role-dropdown"
+                >
+
+                  <option value="" disabled selected>
+                    Select Target Role
+                  </option>
+
+                  <option
+                    *ngFor="let role of targetRoles"
+                    [value]="role"
+                  >
+                    {{ role }}
+                  </option>
+
+                </select>
+
+                <button
+                  class="analyze-btn"
+                  (click)="analyzeGap(file)"
+                 [disabled]="!selectedRole"
+                >
+                  Analyze Gap
+                </button>
+
+              </div>
+
+              <!-- Forecast -->
+              <button
+  class="forecast-btn"
+  (click)="forecastCareer(file)"
+  [disabled]="!selectedRole"
+>
+                Forecast Career Growth
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
