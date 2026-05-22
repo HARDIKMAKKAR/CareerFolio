@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SkillService {
-  private api = 'http://localhost:5000/api/skills'; // Node server
+  private api = 'https://careerfolio-xtnw.onrender.com/api/skills'; // Node server
 
 
   forecastResult: any;

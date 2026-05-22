@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UploadService {
-  private api = 'http://localhost:5000/api/files';
+  private api = 'https://careerfolio-xtnw.onrender.com/api/files';
   constructor(private http: HttpClient) {}
 
 
@@ -31,7 +31,7 @@ export class UploadService {
 
 
   extractSkills(fileId: string): Observable<any> {
-    return this.http.get(`http://localhost:5000/api/extract/${fileId}`); 
+    return this.http.get(`https://careerfolio-xtnw.onrender.com/api/extract/${fileId}`); 
   }
 
 }

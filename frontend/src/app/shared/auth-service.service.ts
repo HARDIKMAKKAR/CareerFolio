@@ -16,7 +16,7 @@ export class AuthServiceService {
   private logoutTimer?: any;
   private accessToken: string = "";
 
-  private apiUrl = 'http://localhost:5000/api/auth'; // change to your Flask API base URL
+  private apiUrl = 'https://careerfolio-xtnw.onrender.com/api/auth'; // change to your Flask API base URL
 
   constructor(private http: HttpClient, private router: Router) {
     const token = localStorage.getItem('auth_token');
