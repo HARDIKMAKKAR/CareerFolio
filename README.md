@@ -1,151 +1,317 @@
-# CareerFolio
+# CareerFolio 🚀
 
-CareerFolio is an AI-powered career guidance platform that helps students and professionals analyze resumes, identify skill gaps, explore suitable career paths, and forecast career readiness.[1]
+An AI-powered career guidance and resume analysis platform that helps students and professionals identify skill gaps, predict career paths, receive personalized recommendations, and forecast career readiness using Machine Learning and NLP.
 
-## Overview
+## 🌐 Live Demo
 
-The project is designed as a data-driven platform for career planning. It focuses on resume understanding, career path prediction, skill recommendation, skill gap analysis, and career growth forecasting through a web-based interface.[1]
+https://careerfolio-qpc0.onrender.com/
 
-Core goals of the project include:
-- Automatic resume analysis to extract skills, experience, certifications, and project-related signals.[1]
-- Career path recommendation based on extracted skills and profile features.[1]
-- Skill gap identification against a selected target role.[1]
-- Career readiness forecasting and estimation of time to become job-ready.[1]
-- Personalized learning and improvement guidance for continuous growth.[1]
+---
 
-## Features
+# 📌 Overview
 
-- Resume-based skill extraction using NLP and rule-based heuristics.[1]
-- Career path prediction using a Random Forest classifier.[1]
-- Skill recommendation using embedding-based nearest neighbour search with FAISS.[1]
-- Skill gap analysis using weighted role-skill matching.[1]
-- Career growth forecasting using Linear Regression with hybrid rule logic.[1]
-- Component-based Angular dashboard for uploading resumes and viewing results.[1]
+CareerFolio is designed to provide intelligent career guidance through resume understanding, skill analysis, and predictive career modeling.
 
-## Architecture
+The platform enables users to:
 
-CareerFolio follows a three-part architecture built around a frontend, an application backend, and an ML service.[1]
+- Upload resumes for automatic skill extraction
+- Predict suitable career roles using ML models
+- Identify missing skills for target job roles
+- Get AI-powered skill recommendations
+- Forecast career readiness and job preparedness
+- Track career growth through data-driven insights
 
-### Frontend
-- **Angular** frontend built with TypeScript, HTML, and CSS for a modular and responsive user interface.[1]
+---
 
-### Backend
-- **Node.js** backend for authentication, user management, session handling, and API routing.[1]
+# ✨ Features
 
-### ML Service
-- **Flask** microservice for model inference, skill analysis, recommendation, and forecasting APIs.[1]
+## 📄 Resume Analysis
+- Resume parsing and preprocessing
+- Skill extraction using NLP techniques
+- Detection of certifications, projects, and technologies
 
-### Service Communication
-- The Node.js backend and Flask ML service communicate through REST APIs using JSON payloads.[1]
+## 🤖 Career Prediction
+- Predicts suitable career paths using Machine Learning
+- Uses trained Random Forest classification models
 
-## Machine Learning Modules
+## 🧠 Skill Recommendation Engine
+- Semantic skill matching using sentence embeddings
+- FAISS-powered nearest neighbor search
+- Recommends related and high-demand skills
 
-### 1. Resume Skill Extraction
-Extracts technical and soft skills, experience, certifications, and project information from uploaded resumes using NLP preprocessing and rule heuristics.[1]
+## 📊 Skill Gap Analysis
+- Compares user skills with target role requirements
+- Calculates readiness percentage
+- Displays missing skills with importance levels
 
-### 2. Career Path Prediction
-Uses a Random Forest classifier trained on role-skill data to predict suitable career roles and confidence scores from extracted features.[1]
+## 📈 Career Growth Forecasting
+- Estimates career readiness score
+- Predicts approximate time to become job-ready
+- Uses Linear Regression with hybrid rule-based logic
 
-### 3. Skill Recommendation
-Uses embeddings with FAISS-based nearest neighbour search to recommend related or missing skills based on the user's current profile.[1]
+## 🎨 Interactive Dashboard
+- Modern Angular-based responsive UI
+- Resume upload interface
+- Dynamic charts and result visualization
 
-### 4. Skill Gap Analysis
-Compares a user's extracted skills with target-role skill requirements and computes missing skills, readiness, and weighted importance.[1]
+---
 
-### 5. Career Growth Forecasting
-Uses Linear Regression plus rule-based post-processing to estimate readiness score and time to become job-ready.[1]
+# 🏗️ System Architecture
 
-## Tech Stack
+CareerFolio follows a microservice-based architecture.
+
+```text
+Angular Frontend
+        ↓
+Node.js / Express Backend
+        ↓
+Flask ML Service
+        ↓
+MongoDB Database
+```
+
+---
+
+# ⚙️ Tech Stack
 
 | Layer | Technologies |
 |---|---|
-| Frontend | Angular, TypeScript, HTML, CSS [1] |
-| Backend | Node.js, Express-style API routing [1] |
-| ML Service | Flask, Scikit-learn, Pandas, NumPy [1] |
-| ML Retrieval | Embeddings, FAISS [1] |
-| Deployment | AWS used in the original project deployment setup [1] |
-| Tooling | Git, GitHub, VS Code, Angular CLI [1] |
+| Frontend | Angular, TypeScript, HTML, CSS |
+| Backend | Node.js, Express.js |
+| ML Service | Flask, Scikit-learn, Pandas, NumPy |
+| ML & NLP | Sentence Transformers, FAISS |
+| Database | MongoDB |
+| Deployment | Render |
+| Version Control | Git, GitHub |
 
-## Repository Structure
+---
+
+# 🧠 Machine Learning Modules
+
+## 1️⃣ Resume Skill Extraction
+Extracts:
+- Technical skills
+- Soft skills
+- Certifications
+- Projects
+- Experience indicators
+
+using NLP preprocessing and heuristic-based analysis.
+
+---
+
+## 2️⃣ Career Path Prediction
+Uses a trained Random Forest Classifier to predict:
+- Suitable career roles
+- Career alignment
+- Domain suitability
+
+---
+
+## 3️⃣ Skill Recommendation System
+Uses:
+- Sentence embeddings
+- Semantic similarity
+- FAISS vector search
+
+to recommend related and missing skills.
+
+---
+
+## 4️⃣ Skill Gap Analysis
+Compares:
+- User skills
+- Role-specific required skills
+
+and computes:
+- Missing skills
+- Matching skills
+- Readiness percentage
+- Skill importance
+
+---
+
+## 5️⃣ Career Growth Forecasting
+Forecasts:
+- Career readiness score
+- Learning progression
+- Estimated months to become job-ready
+
+using hybrid ML + rule-based scoring.
+
+---
+
+# 📂 Project Structure
 
 ```text
-CareerFolio_Final/
-├── frontend/       # Angular application
-├── backend/        # Node.js backend
-├── ml-service/     # Flask ML service and trained models
-└── README.md
+CareerFolio/
+│
+├── frontend/          # Angular frontend
+├── backend/           # Node.js backend
+├── ml-service/        # Flask ML microservice
+│
+├── README.md
 ```
 
-A practical structure for the ML service is:
+---
 
-```text
-ml-service/
-├── app.py
-├── requirements.txt
-├── models/
-├── data/
-└── scripts/
-```
+# 🚀 Deployment Architecture
 
-## Setup
+| Service | Platform |
+|---|---|
+| Angular Frontend | Render Static Site |
+| Node.js Backend | Render Web Service |
+| Flask ML Service | Render Web Service |
+| Database | MongoDB Atlas |
 
-### Prerequisites
-- Node.js 14+ for frontend and backend development.[1]
-- Angular CLI for Angular development.[1]
-- Python environment for the Flask ML service and model dependencies.[1]
-- Git for version control.[1]
+---
 
-### 1. Clone the repository
+# 🔌 API Architecture
+
+## Backend APIs
+- Authentication APIs
+- Resume upload APIs
+- File management APIs
+- Route orchestration APIs
+
+## ML APIs
+- `/recommend-skills`
+- `/predict-career`
+- `/api/skills/gap`
+- `/forecast-growth`
+
+---
+
+# 🛠️ Installation & Setup
+
+## Prerequisites
+
+- Node.js
+- Angular CLI
+- Python 3.x
+- MongoDB
+- Git
+
+---
+
+# 1️⃣ Clone Repository
+
 ```bash
-git clone <your-repo-url>
-cd CareerFolio_Final
+git clone https://github.com/HARDIKMAKKAR/CareerFolio.git
+cd CareerFolio
 ```
 
-### 2. Run the frontend
+---
+
+# 2️⃣ Frontend Setup
+
 ```bash
 cd frontend
 npm install
 ng serve
 ```
 
-### 3. Run the backend
+Frontend runs on:
+
+```text
+http://localhost:4200
+```
+
+---
+
+# 3️⃣ Backend Setup
+
 ```bash
 cd backend
 npm install
 npm start
 ```
 
-### 4. Run the ML service
+Backend runs on:
+
+```text
+http://localhost:5000
+```
+
+---
+
+# 4️⃣ ML Service Setup
+
 ```bash
 cd ml-service
+
 python -m venv venv
+
 # Windows
 venv\Scripts\activate
-# macOS/Linux
+
+# Linux/macOS
 source venv/bin/activate
+
 pip install -r requirements.txt
+
 python app.py
 ```
 
-## Workflow
+ML Service runs on:
 
-The development followed an Agile approach with iterative development, testing, integration, and user feedback cycles.[1] The system was built with modular separation between Angular, Node.js, and Flask so that frontend logic, core backend operations, and ML inference could evolve independently.[1]
+```text
+http://localhost:5001
+```
 
-## Testing
+---
 
-The report describes testing at three levels:[1]
-- Unit testing for ML models, API endpoints, and UI components.[1]
-- Integration testing across Angular, Node.js, and Flask services.[1]
-- User testing to refine prediction quality and dashboard clarity.[1]
+# 📦 Core Libraries Used
 
-## Future Improvements
+## Frontend
+- Angular
+- RxJS
+- TypeScript
 
-- Add a stronger Skill Value Index (SVI) for richer skill evaluation.[1]
-- Integrate real-time job market analysis.[1]
-- Develop a mobile application.[1]
-- Add personalized learning paths and goal-based recommendations.[1]
-- Improve personalization with user activity analytics and gamified features.[1]
+## Backend
+- Express.js
+- Mongoose
+- Multer
+- JWT Authentication
 
-## Notes
+## ML/NLP
+- Scikit-learn
+- Sentence Transformers
+- FAISS
+- NumPy
+- Pandas
 
-The project report states that trained models were deployed as serialized `.pkl` files through Flask routes, so model artifacts and related runtime files should remain available to the ML service in deployment.[1]
+---
+
+# 🧪 Testing
+
+The platform includes:
+- Unit testing
+- API testing
+- Integration testing
+- User interface testing
+
+---
+
+# 📈 Future Enhancements
+
+- Real-time job market integration
+- AI learning roadmap generation
+- Personalized course recommendations
+- Gamified career tracking
+- Mobile application support
+- Advanced analytics dashboard
+
+---
+
+# 👨‍💻 Author
+
+**Hardik Makkar**  
+B.Tech CSE — JC Bose University YMCA  
+AI/ML • Full Stack • Cloud • Data-Driven Systems
+
+---
+
+# 📄 License
+
+This project is developed for educational and research purposes.
