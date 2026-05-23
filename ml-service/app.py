@@ -83,6 +83,13 @@ print("✅ FAISS model ready!")
 def home():
     return "ML Service Running"
 
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({
+        "status": "ok",
+        "service": "ml-service"
+    }), 200
+
 @app.route("/recommend-skills", methods=["POST"])
 def recommend_skills():
     data = request.get_json()
@@ -318,5 +325,5 @@ def forecast_growth():
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5001))
     app.run(host="0.0.0.0", port=port)

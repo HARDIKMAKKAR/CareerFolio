@@ -11,7 +11,8 @@ import { Route, Router } from '@angular/router';
 export class DashboardComponent {
 
   predictedRole: string = '';
-
+  loading = false;
+  loadingMessage = '';
 // async forecastCareer(file : any) {
 //   if (!this.selectedRole) {
 //     alert("Please select a target role first!");
@@ -90,6 +91,9 @@ async forecastCareer(file: any): Promise<void> {
     alert("Please select a target role first!");
     return;
   }
+
+  this.loading = true;
+this.loadingMessage = "Running career forecast...";
 
   try {
 
@@ -171,7 +175,7 @@ async forecastCareer(file: any): Promise<void> {
           'forecastResult',
           JSON.stringify(res)
         );
-
+          this.loading = false;
         // Navigate
         this.router.navigate(['/forecast-result']);
       },
@@ -179,7 +183,7 @@ async forecastCareer(file: any): Promise<void> {
       error: (err) => {
 
         console.error(err);
-
+this.loading = false;
         alert(
           "❌ Forecast request failed. Please try again later."
         );
@@ -190,7 +194,7 @@ async forecastCareer(file: any): Promise<void> {
   } catch (err) {
 
     console.error(err);
-
+    
     alert("❌ Failed to extract resume skills.");
 
   }
@@ -293,6 +297,8 @@ textExtracted = '';
 skillsExtracted = [];
 skillsReady = false;
   extractFile(id: string, originalName: string) {
+    this.loading = true;
+this.loadingMessage = "Extracting resume...";
     let skills : [] = [];
     this.uploadService.extractSkills(id).subscribe(res=>{
       this.textExtracted = res.text;
@@ -301,7 +307,7 @@ skillsReady = false;
       this.skillsReady = true;
       localStorage.setItem('skillsExtracted', JSON.stringify(skills));
       console.log(res);
-
+      this.loadingMessage = "Generating recommendations...";
       this.skillService.recommend(skills).subscribe({
   next: (res) => {
     // this.loading = false;
@@ -326,7 +332,7 @@ skillsReady = false;
 });
 
 
-
+  this.loadingMessage = "Predicting career path...";
     this.skillService.predict(skills).subscribe({
   next: (res) => {
     // this.loading = false;
@@ -343,7 +349,9 @@ skillsReady = false;
       // handle error response shape
       console.warn('Recommendation failed', res);
     }
+    this.loading = false;
   },
+
   error: (err) => {
     // this.loading = false;
     console.error('Error fetching recommendations', err);
@@ -429,7 +437,6 @@ extractSkillsOnly(id: string): Promise<void> {
 // }
 
 
-
 async analyzeGap(file: any) {
 
   if (!this.selectedRole) {
@@ -437,25 +444,39 @@ async analyzeGap(file: any) {
     return;
   }
 
-  await this.extractSkillsOnly(file.gridFsId);
+  this.loading = true;
+  this.loadingMessage = "Analyzing skill gap...";
 
-  this.skillService.skill_gap_analysis(
-    this.skillsExtracted,
-    this.selectedRole
-  ).subscribe(res => {
+  try {
 
-    console.log(res);
+    await this.extractSkillsOnly(file.gridFsId);
 
-    this.skillService.setGapResult(res);
+    this.loadingMessage = "Computing skill gap...";
 
-    localStorage.setItem(
-      'gapResult',
-      JSON.stringify(res)
-    );
+    this.skillService.skill_gap_analysis(
+      this.skillsExtracted,
+      this.selectedRole
+    ).subscribe({
 
-    this.router.navigate(['/gap-result']);
-  });
+      next: (res) => {
+        this.loading = false;
 
+        this.skillService.setGapResult(res);
+        localStorage.setItem('gapResult', JSON.stringify(res));
+
+        this.router.navigate(['/gap-result']);
+      },
+
+      error: () => {
+        this.loading = false;
+        alert("Gap analysis failed");
+      }
+
+    });
+
+  } catch (e) {
+    this.loading = false;
+    alert("Skill extraction failed");
+  }
 }
-
 }

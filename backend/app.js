@@ -26,6 +26,22 @@ app.get('/', (req, res) => {
     res.send('CareerFolio Backend Running');
 });
 
+app.get("/health", (req, res) => {
+  const memoryUsage = process.memoryUsage();
+
+  res.status(200).json({
+    status: "ok",
+    service: "backend",
+    uptime_seconds: Math.floor(process.uptime()),
+    memory: {
+      rss: memoryUsage.rss,
+      heapUsed: memoryUsage.heapUsed,
+      heapTotal: memoryUsage.heapTotal
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/files', fileRoutes);
 app.use('/api/extract', extractRoutes);

@@ -34,7 +34,7 @@
     
     
        <a style="cursor: pointer;" *ngIf="isAuthenticated$ | async" (click)="logout()" class="link">Logout</a>
-      <a class="link" href="/signup">Get started</a>
+      <a class="link" routerLink="/signup">Get started</a>
     </div>
   </div>
 </header>
